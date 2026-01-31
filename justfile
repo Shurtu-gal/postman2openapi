@@ -9,7 +9,7 @@ build-release:
 start-web: build-web
   npm run start --prefix ./web
 
-build-lib:
+build-cargo:
   cargo build
 build-cli:
   cargo build --package postman2openapi-cli
@@ -17,6 +17,8 @@ build-web:
   wasm-pack build --release --out-dir ./web/wasm --target bundler
   npm install --prefix ./web
   npm run build --prefix ./web
+build-lib:
+	wasm-pack build --release --out-dir ./lib --target bundler
 build-nodejs:
   wasm-pack build --release --out-dir ./nodejs --target nodejs
 build-devcontainer-image:
